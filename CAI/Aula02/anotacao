@@ -1,0 +1,35 @@
+ls -lS nome_Arquivo #Organiza a lista por tamanho do arquivo
+ls -lSr nome_arquivo #
+
+cat arquivo.txt | grep ^A..  #exibe a lista de nomes por linha que começa com o caractere 'A'
+cat arquivo.txt | grep ^a..r #exibe a lista de nomes por linha que começa cm o caractere 'a' e termina com 'r'
+
+cat nome_arquivo | grep ^[#] 	 //Exiba tudo que começe com '#'
+cat nome_arquivo | grep ^[A][b]	 //Exiba tudo que começe com 'A' e que o segundo caractere seja 'b'
+cat nome_arquivo | grep ^[Ab][c] //Exiba tudo que começe com "Ab" e que o segundo caractere seja 'c'
+cat nome_arquivo | grep ^[^#] 	 //Exiba tudoq que NÃO começe com '#'
+
+Regular expression (Regex)        #BRE = Basic Regular Expression
+Principais caracteres do regex: ^
+				$
+				.
+				?
+				+
+				*
+				[]
+www.regular-expression.info
+
+apache2 #ss -ntl 
+	#terá q exibir a porta :::80
+	#abrir o navegador e na address bar entrar com o ip da máquina
+	#
+	#cd /var/www/html/
+	#mv index.html index.old
+	#vim index.html
+	#aí pode programar
+	
+
+	#cd /etc/apache2/conf-enabled
+	#vim charset.conf
+	#descomentar a linha "AddDefaultCharset UTF -8"
+	#systemctl restart apache2
