@@ -21,12 +21,18 @@ CRIAR(){
 
 	useradd -m -s /bin/tcsh $CRIARUSER #-m Cria o home/
 	
-	passwd $CRIARUSER
+	passwd $CRIARUSER 
 	
 	
 		
 	
-	read -p "Criado com sucesso. Pressione [enter] para finalizar."
+	#read -p "Criado com sucesso. Pressione [enter] para finalizar."
+
+	dialog 										\
+	--title "Criado"								\
+	--msgbox "Usuário criado com sucesso.\nPressione [enter] para finalizar."	\
+	0 0
+
 	menu
 }
 
@@ -34,10 +40,22 @@ CRIAR(){
 
 REMOVER(){
 
-	read -p "Digite o nome do usuário a ser removido: " REMOVERUSER
+	#read -p "Digite o nome do usuário a ser removido: " REMOVERUSER
+	
+	REMOVERUSER=$(dialog							\
+			--stdout						\
+			--title "Remover Usuário"				\
+			--inputbox "Digite o nome do usuário a ser removido: "	\
+			0 0)		
 	userdel -r $REMOVERUSER
 
-	read -p "Usuário removido com sucesso. Pressione [enter] para finalizar."
+	#read -p "Usuário removido com sucesso. Pressione [enter] para finalizar."
+	
+	dialog										\
+	--title "Removido"								\
+	--msgbox "Usuário removido com sucesso.\nPressione [enter] para finalizar."	\
+	0 0
+	
 	menu
 }
 
@@ -45,16 +63,24 @@ REMOVER(){
 
 menu(){
 	clear
-	echo "1) Criar usuários"
-	echo "2) Remover usuários"
-	echo "3) Sair"
+
+	#echo "1) Criar usuários"
+	
+
+	#echo "2) Remover usuários"
+
+
+	#echo "3) Sair"
+
+			
+
 	#read -p "Escolha uma opção: " OPCAO 
 	#-p vai chamar o prompt para a entrada de dados pelo usuário
 
-	OPCAO=$( dialog				  \
+	OPCAO=$( dialog					  \
 			 --stdout			  \
 			 --title "Opções" 		  \
-			 --inputbox "Digite uma das opções: " \
+			 --inputbox "1) Adicionar usuário\n2) Remover usuário\n3) Sair" \
 			 0 0)	
 
 	
